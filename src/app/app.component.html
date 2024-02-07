@@ -2,7 +2,11 @@
   <div class="ion-text-center vertical-center">
     <ion-button (click)="solicitarPermiso()" color="dark">Solicitar permisos</ion-button>
     <ion-button (click)="cargarDatos()" color="dark">Datos</ion-button>
-    <p *ngIf="dataRes">data text 3 {{dataText2}}</p>
-    <p *ngIf="dataRes">data text 4 {{this.dataText2}}</p>
+    <p *ngIf="dataRes">data text</p>
+    <p *ngIf="dataRes">{{dataText2}}</p>
+    <p *ngIf="dataRes">Sleep state</p>
+    <p *ngIf="dataRes">{{stateSleep}}</p>
+    <p *ngIf="dataRes">Sleep hour</p>
+    <p *ngIf="dataRes">{{hora}}</p>
   </div>
 </ion-app>
