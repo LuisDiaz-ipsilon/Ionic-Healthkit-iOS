@@ -38,3 +38,20 @@ export const getActivityData = async (startDate: Date, endDate: Date = new Date(
     }
 };
 
+
+export const getAllActivityData = async (startDate: Date, endDate: Date = new Date()): Promise<QueryOutput<ActivityData>> => {
+    try {
+        const queryOptions = {
+            sampleName: SampleNames.STEP_COUNT,
+            startDate: startDate.toISOString(),
+            endDate: endDate.toISOString(),
+            limit: 1000,
+        };
+
+        return await CapacitorHealthkit.queryHKitSampleType<ActivityData>(queryOptions);
+    } catch (error) {
+        console.error(error);
+        throw error;  // Opcional: Puedes volver a lanzar el error si quieres propagarlo más arriba.
+    }
+};
+
