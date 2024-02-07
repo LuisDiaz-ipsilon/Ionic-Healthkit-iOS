@@ -1,3 +1,8 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <div class="ion-text-center vertical-center">
+    <ion-button (click)="solicitarPermiso()" color="dark">Solicitar permisos</ion-button>
+    <ion-button (click)="cargarDatos()" color="dark">Datos</ion-button>
+    <p *ngIf="dataRes">data text 3 {{dataText2}}</p>
+    <p *ngIf="dataRes">data text 4 {{this.dataText2}}</p>
+  </div>
 </ion-app>
