@@ -19,7 +19,9 @@ export class AppComponent implements OnInit {
   constructor(private healthKitService: HealtkitService) {}
 
   ngOnInit(): void {
-    
+    this.healthKitService.getPermissions();
+    this.healthKitService.getAvailable();
+    this.healthKitService.getEditionSleepAnalysisAuth();
   }
 
   solicitarPermiso(){
@@ -33,7 +35,7 @@ export class AppComponent implements OnInit {
       const startDate = new Date('2024-02-04');
       const endDate = new Date('2024-02-06');
       
-      const data = await this.healthKitService.getActivity(startDate, endDate);
+      const data = await this.healthKitService.getActivitySleep(startDate, endDate);
       data.resultData.forEach((element, index) => {
         console.log(`Elemento ${index + 1}:`, element);
       });
@@ -42,9 +44,13 @@ export class AppComponent implements OnInit {
       this.resDataArr=data.resultData;
       /*
       this.stateSleep = this.resDataArr[0].sleepState;
-      this.hora=this.resDataArr[0].timeZone;*/
+      this.hora=this.resDataArr[0].timeZone;
+      
+      console.log('Datos de la actividad de dormir:', data);
+
+      const allData = await this.healthKitService.getActivityAllData(startDate, endDate);
+      console.log('Datos de todas actividades:', allData)*/
       this.dataRes=true;
-      console.log('Datos de la actividad:', data);
     } catch (error) {
       console.error('Error al obtener datos de actividad:', error);
     }

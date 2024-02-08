@@ -7,9 +7,8 @@ import {
     SleepData,
 } from '@perfood/capacitor-healthkit';
 
-
 //const READ_PERMISSIONS = ['calories', 'stairs', 'activity', 'steps', 'distance', 'duration', 'weight'];
-const READ_PERMISSIONS = ['activity'];
+const READ_PERMISSIONS = ['SleepAnalysis'];
 
 export const requestAuthorization = async (): Promise<void> => {
     try {
@@ -24,7 +23,7 @@ export const requestAuthorization = async (): Promise<void> => {
     }
 }
 
-export const getActivityData = async (startDate: Date, endDate: Date = new Date()): Promise<QueryOutput<SleepData>> => {
+export const getActivitySleep = async (startDate: Date, endDate: Date = new Date()): Promise<QueryOutput<SleepData>> => {
     try {
         const queryOptions = {
             sampleName: SampleNames.SLEEP_ANALYSIS,
@@ -56,6 +55,23 @@ export const isEditionSleepAnalysisAuth = async (): Promise<void> => {
         console.error('[HealthKit-Util] No availablet:', error);
     }
 }
+
+export const getActivityAllData = async (startDate: Date, endDate: Date = new Date()): Promise<any> => {
+    try {
+        const queryOptions = {
+            sampleNames: [SampleNames.SLEEP_ANALYSIS, SampleNames.HEART_RATE],
+            startDate: startDate.toISOString(),
+            endDate: endDate.toISOString(),
+            limit: 0,
+        };
+        
+        return await CapacitorHealthkit.multipleQueryHKitSampleType(queryOptions);
+    } catch (error) {
+        console.error('[HealthKit util] Error al obtener alguna actividad');       
+        console.error(error);
+        throw error;  // Opcional: Puedes volver a lanzar el error si quieres propagarlo más arriba.
+    }
+};
 
 
 

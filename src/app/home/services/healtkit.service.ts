@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { requestAuthorization, getActivityData, isAvailable, isEditionSleepAnalysisAuth} from 'src/app/utils/healthkit-util';
+import { requestAuthorization, getActivityAllData, isAvailable, isEditionSleepAnalysisAuth, getActivitySleep} from 'src/app/utils/healthkit-util';
 import { CapacitorHealthkit, SampleNames, QueryOutput, ActivityData, SleepData } from '@perfood/capacitor-healthkit';  // Ajusta las importaciones según tu proyecto
 
 
@@ -15,8 +15,8 @@ export class HealtkitService {
     console.log("Permiso IOS HealthKit: "+res.toString());
   }
 
-  async getActivity(startDate: Date, endDate: Date = new Date()): Promise<QueryOutput<SleepData>> {
-    return await getActivityData(startDate, endDate);
+  async getActivitySleep(startDate: Date, endDate: Date = new Date()): Promise<QueryOutput<SleepData>> {
+    return await getActivitySleep(startDate, endDate);
     
   }
 
@@ -28,6 +28,10 @@ export class HealtkitService {
   async getEditionSleepAnalysisAuth(): Promise<void>{
     const res = await isEditionSleepAnalysisAuth;
     console.log("HealthKit Sleep Analaysis Edition disponible: "+res.toString());
+  }
+
+  async getActivityAllData(startDate: Date, endDate: Date = new Date()): Promise<any> {
+    return await getActivityAllData(startDate, endDate);
   }
 
 
