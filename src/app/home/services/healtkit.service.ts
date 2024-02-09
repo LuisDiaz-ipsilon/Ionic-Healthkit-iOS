@@ -15,8 +15,8 @@ export class HealtkitService {
     console.log("Permiso IOS HealthKit: "+res.toString());
   }
 
-  async getActivitySleep(startDate: Date, endDate: Date): Promise<QueryOutput<SleepData>> {
-    return await getActivitySleep(startDate, endDate); 
+  async getActivitySleep(): Promise<QueryOutput<SleepData>> {
+    return await getActivitySleep(); 
   }
 
   async getWeight(): Promise<QueryOutput<OtherData>> {

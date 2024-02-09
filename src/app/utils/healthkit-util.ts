@@ -23,8 +23,14 @@ export const requestAuthorization = async (): Promise<void> => {
     }
 }
 
-export const getActivitySleep = async (startDate: Date, endDate: Date): Promise<QueryOutput<SleepData>> => {
+export const getActivitySleep = async (): Promise<QueryOutput<SleepData>> => {
     try {
+        const current = new Date();
+        const startDate = new Date(current);
+        startDate.setDate(current.getDate() - 1); //Restar 1 día
+        startDate.setHours(19, 0, 0, 0); //Establecer las 7:00 PM
+        const endDate = new Date();
+
         const queryOptions = {
             sampleName: SampleNames.SLEEP_ANALYSIS,
             startDate: startDate.toISOString(),

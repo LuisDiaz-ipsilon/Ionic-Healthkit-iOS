@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HealtkitService } from './home/services/healtkit.service';
-import { CapacitorHealthkit, SleepData } from '@perfood/capacitor-healthkit';
+import { CapacitorHealthkit, SampleNames, SleepData } from '@perfood/capacitor-healthkit';
 
 @Component({
   selector: 'app-root',
@@ -38,11 +38,9 @@ export class AppComponent implements OnInit {
 
   async cargarDatos() {
     try {
-
-      const startDate = new Date('2024-02-04');
-      const endDate = new Date('2024-02-08');
       
-      const dataSleep = await this.healthKitService.getActivitySleep(startDate, endDate);
+      
+      const dataSleep = await this.healthKitService.getActivitySleep();
       //dataSleep.resultData.forEach((element, index) => {
         //console.log(`Elemento ${index + 1}:`, element);
       //});
@@ -56,9 +54,25 @@ export class AppComponent implements OnInit {
       const dataSteps = await this.healthKitService.getSteps();
       this.pasos = dataSteps.resultData[0].value.toString();
 
-      const dataHR = await this.healthKitService.getHR();
-      console.log(dataHR);
+      //const dataHR = await this.healthKitService.getHR();
+      //console.log(dataHR);
       //this.HR = dataHR.resultData[0].value.toString();
+
+      const current = new Date();
+      const startOfDay = new Date(current.getFullYear(), current.getMonth(), current.getDate(), 0, 0, 0);
+      const endOfDay = new Date(current.getFullYear(), current.getMonth(), current.getDate(), 23, 59, 59);
+      const startDate = startOfDay.toISOString();
+      const endDate = endOfDay.toISOString();
+
+      const qr = {
+        sampleName: SampleNames.HEART_RATE,
+        startDate,
+        endDate,
+        limit: 0,
+      };
+
+      const dataHR = await CapacitorHealthkit.queryHKitSampleType(qr);
+      console.log(dataHR);
 
       this.dataRes=true;
     } catch (error) {
