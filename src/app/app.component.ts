@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   stateSleep: string = "testing";
   hora: string = "testing";
 
-  bloodDate: string = "testing";
+  HR: string = "testing";
   peso: string = "testing";
   pasos: string = "testing";
   
@@ -52,6 +52,13 @@ export class AppComponent implements OnInit {
 
       const dataWeight = await this.healthKitService.getWeight();
       this.peso = dataWeight.resultData[0].value.toString();
+
+      const dataSteps = await this.healthKitService.getSteps();
+      this.pasos = dataSteps.resultData[0].value.toString();
+
+      const dataHR = await this.healthKitService.getHR();
+      console.log(dataHR);
+      //this.HR = dataHR.resultData[0].value.toString();
 
       this.dataRes=true;
     } catch (error) {

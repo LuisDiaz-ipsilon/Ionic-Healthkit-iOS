@@ -63,6 +63,52 @@ export const getWeight = async (): Promise<QueryOutput<OtherData>> => {
     }
 };
 
+export const getSteps = async (): Promise<QueryOutput<OtherData>> => {
+    try {
+        const current = new Date();
+        const startOfDay = new Date(current.getFullYear(), current.getMonth(), current.getDate(), 0, 0, 0);
+        const endOfDay = new Date(current.getFullYear(), current.getMonth(), current.getDate(), 23, 59, 59);
+        const startDate = startOfDay.toISOString();
+        const endDate = endOfDay.toISOString();
+
+        const queryOptions = {
+            sampleName: SampleNames.STEP_COUNT,
+            startDate,
+            endDate,
+            limit: 0,
+        };
+
+        return await CapacitorHealthkit.queryHKitSampleType<OtherData>(queryOptions);
+    } catch (error) {
+        console.error('[HealthKit util] Error al obtener los pasos de la persona');       
+        console.error(error);
+        throw error; 
+    }
+};
+
+export const getHR = async (): Promise<QueryOutput> => {
+    try {
+        const current = new Date();
+        const startOfDay = new Date(current.getFullYear(), current.getMonth(), current.getDate(), 0, 0, 0);
+        const endOfDay = new Date(current.getFullYear(), current.getMonth(), current.getDate(), 23, 59, 59);
+        const startDate = startOfDay.toISOString();
+        const endDate = endOfDay.toISOString();
+
+        const queryOptions = {
+            sampleName: SampleNames.HEART_RATE,
+            startDate,
+            endDate,
+            limit: 0,
+        };
+
+        return await CapacitorHealthkit.queryHKitSampleType(queryOptions);
+    } catch (error) {
+        console.error('[HealthKit util] Error al obtener la informacion de sangre');       
+        console.error(error);
+        throw error; 
+    }
+}
+
 export const isAvailable = async (): Promise<void> => {
     try {
         return await CapacitorHealthkit.isAvailable();

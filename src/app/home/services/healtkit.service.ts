@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { requestAuthorization, getActivityAllData, isAvailable, isEditionSleepAnalysisAuth, getActivitySleep, getWeight} from 'src/app/utils/healthkit-util';
+import { requestAuthorization, getActivityAllData, isAvailable, isEditionSleepAnalysisAuth, getActivitySleep, getWeight, getSteps, getHR} from 'src/app/utils/healthkit-util';
 import { CapacitorHealthkit, SampleNames, QueryOutput, ActivityData, SleepData, OtherData } from '@perfood/capacitor-healthkit';  // Ajusta las importaciones según tu proyecto
 
 
@@ -21,6 +21,14 @@ export class HealtkitService {
 
   async getWeight(): Promise<QueryOutput<OtherData>> {
     return await getWeight();
+  }
+
+  async getSteps(): Promise<QueryOutput<OtherData>> {
+    return await getSteps();
+  }
+
+  async getHR(): Promise<QueryOutput> {
+    return await getHR();
   }
 
   async getActivityAllData(startDate: Date, endDate: Date = new Date()): Promise<any> {
