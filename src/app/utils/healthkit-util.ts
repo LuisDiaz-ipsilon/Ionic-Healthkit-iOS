@@ -7,20 +7,21 @@ import {
     SleepData,
 } from '@perfood/capacitor-healthkit';
 
-//const READ_PERMISSIONS = ['calories', 'stairs', 'activity', 'steps', 'distance', 'duration', 'weight'];
-const READ_PERMISSIONS = ['SleepAnalysis'];
+
+//const READ_PERMISSIONS = ['SleepAnalysis'];
 
 export const requestAuthorization = async (): Promise<void> => {
-    try {
-        return await CapacitorHealthkit.requestAuthorization({
-            all: [''],
+    const READ_PERMISSIONS = ['calories', 'stairs', 'activity', 'steps', 'distance', 'duration', 'weight'];
+    //try {
+        await CapacitorHealthkit.requestAuthorization({
+            all: [],
             read: READ_PERMISSIONS,
-            write: [''],
+            write: [],
         });
 
-    } catch (error) {
-        console.error('[HealthKit-Util] Error getting Authorization:', error);
-    }
+    //} catch (error) {
+      //  console.error('[HealthKit-Util] Error getting Authorization:', error);
+    //}
 }
 
 export const getActivitySleep = async (startDate: Date, endDate: Date = new Date()): Promise<QueryOutput<SleepData>> => {
