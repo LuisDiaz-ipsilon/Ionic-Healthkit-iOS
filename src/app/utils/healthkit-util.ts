@@ -92,7 +92,7 @@ export const getSteps = async (): Promise<QueryOutput<OtherData>> => {
     }
 };
 
-export const getHR = async (): Promise<QueryOutput> => {
+export const getHR = async (): Promise<QueryOutput<OtherData>> => {
     try {
         const current = new Date();
         const startOfDay = new Date(current.getFullYear(), current.getMonth(), current.getDate(), 0, 0, 0);
@@ -107,7 +107,7 @@ export const getHR = async (): Promise<QueryOutput> => {
             limit: 0,
         };
 
-        return await CapacitorHealthkit.queryHKitSampleType(queryOptions);
+        return await CapacitorHealthkit.queryHKitSampleType<OtherData>(queryOptions);
     } catch (error) {
         console.error('[HealthKit util] Error al obtener la informacion de sangre');       
         console.error(error);

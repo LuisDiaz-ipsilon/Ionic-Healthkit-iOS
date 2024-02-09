@@ -27,7 +27,7 @@ export class HealtkitService {
     return await getSteps();
   }
 
-  async getHR(): Promise<QueryOutput> {
+  async getHR(): Promise<QueryOutput<OtherData>> {
     return await getHR();
   }
 
