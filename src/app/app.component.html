@@ -2,11 +2,19 @@
   <div class="ion-text-center vertical-center">
     <ion-button (click)="solicitarPermiso()" color="dark">Solicitar permisos</ion-button>
     <ion-button (click)="cargarDatos()" color="dark">Datos</ion-button>
-    <p *ngIf="dataRes">data text</p>
-    <p *ngIf="dataRes">{{dataText2}}</p>
-    <p *ngIf="dataRes">Sleep state</p>
+
+    <p *ngIf="dataRes">Sueño estado</p>
     <p *ngIf="dataRes">{{stateSleep}}</p>
-    <p *ngIf="dataRes">Sleep hour</p>
+    <p *ngIf="dataRes">horas dormidas del ultimo dia</p>
     <p *ngIf="dataRes">{{hora}}</p>
+
+    <p *ngIf="dataRes">Hemoglobina</p>
+    <p *ngIf="dataRes">{{bloodDate}}</p>
+
+    <p *ngIf="dataRes">Peso</p>
+    <p *ngIf="dataRes">{{peso}}</p>
+    
+    <p *ngIf="dataRes">Pasos</p>
+    <p *ngIf="dataRes">{{pasos}}</p>
   </div>
 </ion-app>

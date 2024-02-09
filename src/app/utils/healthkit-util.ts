@@ -7,24 +7,23 @@ import {
     SleepData,
 } from '@perfood/capacitor-healthkit';
 
-
 //const READ_PERMISSIONS = ['SleepAnalysis'];
 
 export const requestAuthorization = async (): Promise<void> => {
     const READ_PERMISSIONS = ['calories', 'stairs', 'activity', 'steps', 'distance', 'duration', 'weight'];
-    //try {
+    try {
         await CapacitorHealthkit.requestAuthorization({
             all: [],
             read: READ_PERMISSIONS,
             write: [],
         });
 
-    //} catch (error) {
-      //  console.error('[HealthKit-Util] Error getting Authorization:', error);
-    //}
+    } catch (error) {
+        console.error('[HealthKit-Util] Error getting Authorization:', error);
+    }
 }
 
-export const getActivitySleep = async (startDate: Date, endDate: Date = new Date()): Promise<QueryOutput<SleepData>> => {
+export const getActivitySleep = async (startDate: Date, endDate: Date): Promise<QueryOutput<SleepData>> => {
     try {
         const queryOptions = {
             sampleName: SampleNames.SLEEP_ANALYSIS,
@@ -37,7 +36,30 @@ export const getActivitySleep = async (startDate: Date, endDate: Date = new Date
     } catch (error) {
         console.error('[HealthKit util] Error al obtener la actividad de dormir');       
         console.error(error);
-        throw error;  // Opcional: Puedes volver a lanzar el error si quieres propagarlo más arriba.
+        throw error;
+    }
+};
+
+export const getWeight = async (): Promise<QueryOutput<OtherData>> => {
+    try {
+        const current = new Date();
+        const startOfDay = new Date(current.getFullYear(), current.getMonth(), current.getDate(), 0, 0, 0);
+        const endOfDay = new Date(current.getFullYear(), current.getMonth(), current.getDate(), 23, 59, 59);
+        const startDate = startOfDay.toISOString();
+        const endDate = endOfDay.toISOString();
+
+        const queryOptions = {
+            sampleName: SampleNames.WEIGHT,
+            startDate,
+            endDate,
+            limit: 0,
+        };
+
+        return await CapacitorHealthkit.queryHKitSampleType<OtherData>(queryOptions);
+    } catch (error) {
+        console.error('[HealthKit util] Error al obtener el peso de la persona');       
+        console.error(error);
+        throw error; 
     }
 };
 
