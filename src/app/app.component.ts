@@ -42,6 +42,7 @@ export class AppComponent implements OnInit {
       
       const dataSleep = await this.healthKitService.getActivitySleep();
       this.hora=dataSleep.resultData[0].duration.toString();
+      console.log(dataSleep.resultData);
 
       //Se hace el conteo total de las horas en AsLeep (dormido incluyendo REM(Movimientos oculares rapidos) y Deep)
       const registrosDormidos = dataSleep.resultData.filter(registro => registro.sleepState === "Asleep");

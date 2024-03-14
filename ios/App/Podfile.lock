@@ -20,7 +20,7 @@ DEPENDENCIES:
   - "CapacitorHaptics (from `../../node_modules/@capacitor/haptics`)"
   - "CapacitorKeyboard (from `../../node_modules/@capacitor/keyboard`)"
   - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
-  - "PerfoodCapacitorHealthkit (from `../../node_modules/@perfood/capacitor-healthkit`)"
+  - PerfoodCapacitorHealthkit (from `../../../../../documents/github/capacitor-healthkit`)
 
 EXTERNAL SOURCES:
   Capacitor:
@@ -36,7 +36,7 @@ EXTERNAL SOURCES:
   CapacitorStatusBar:
     :path: "../../node_modules/@capacitor/status-bar"
   PerfoodCapacitorHealthkit:
-    :path: "../../node_modules/@perfood/capacitor-healthkit"
+    :path: "../../../../../documents/github/capacitor-healthkit"
 
 SPEC CHECKSUMS:
   Capacitor: ebfc16cdb8116d04c101686b080342872da42d43
@@ -47,6 +47,6 @@ SPEC CHECKSUMS:
   CapacitorStatusBar: f390fbb49b82ffb754ea4b3cf71dc8b048baf3e7
   PerfoodCapacitorHealthkit: 88f6e78b319072c4d0aec439b2fcc14d3f05d311
 
-PODFILE CHECKSUM: b5a853b8b6f1ec1d31940628110c3df1d187fa09
+PODFILE CHECKSUM: 3687acfbb57fff04affaa788914110ec2a632b35
 
-COCOAPODS: 1.15.0
+COCOAPODS: 1.15.2
