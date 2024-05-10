@@ -15,7 +15,8 @@ def capacitor_pods
   pod 'CapacitorHaptics', :path => '../../node_modules/@capacitor/haptics'
   pod 'CapacitorKeyboard', :path => '../../node_modules/@capacitor/keyboard'
   pod 'CapacitorStatusBar', :path => '../../node_modules/@capacitor/status-bar'
-  pod 'PerfoodCapacitorHealthkit', :path => '../../../../../documents/github/capacitor-healthkit'
+  pod 'PerfoodCapacitorHealthkit', :path => '../../../capacitor-healthkit'
+  pod 'CapacitorOmron', :path => '../../../../../documents/github/capacitor-omron'
 end
 
 target 'App' do

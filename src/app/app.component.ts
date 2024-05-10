@@ -18,6 +18,8 @@ export class AppComponent implements OnInit {
   HR: string = "testing";
   peso: string = "testing";
   pasos: string = "testing";
+  bloodPressureSystolic: string = "testing";
+  bloodPressureDiastolic: string = "testing";
   
   constructor(private healthKitService: HealtkitService) {}
 
@@ -66,9 +68,17 @@ export class AppComponent implements OnInit {
       const dataSteps = await this.healthKitService.getSteps();
       this.pasos = dataSteps.resultData[0].value.toString();
 
-      //const dataHR = await this.healthKitService.getHR();
-      //console.log(dataHR);
-      //this.HR = dataHR.resultData[0].value.toString();
+      const dataHR = await this.healthKitService.getHR();
+      console.log(dataHR);
+      this.HR = dataHR.resultData[0].value.toString();
+
+      const bloodPressureS = await this.healthKitService.getBloodPressureSystolic();
+      console.log(bloodPressureS.resultData);
+      this.bloodPressureSystolic = bloodPressureS.resultData[0].value.toString();
+
+      const bloodPressureD = await this.healthKitService.getBloodPressureDiastolic();
+      console.log(bloodPressureD.resultData);
+      this.bloodPressureDiastolic = bloodPressureD.resultData[0].value.toString();
 
       this.dataRes=true;
     } catch (error) {

@@ -2,16 +2,16 @@
   <div class="ion-text-center vertical-center">
     <ion-button (click)="solicitarPermiso()" color="dark">Solicitar permisos</ion-button>
     <ion-button (click)="cargarDatos()" color="dark">Datos</ion-button>
-
+    <p *ngIf="dataRes">Blood Pressure Systolic</p>
+    <p *ngIf="dataRes">{{bloodPressureSystolic}}</p>
+    <p *ngIf="dataRes">Blood Pressure Diastolic</p>
+    <p *ngIf="dataRes">{{bloodPressureDiastolic}}</p>
     <p *ngIf="dataRes">horas dormidas del ultimo dia</p>
     <p *ngIf="dataRes">{{hora}}</p>
-
     <p *ngIf="dataRes">Heart Rate</p>
     <p *ngIf="dataRes">{{HR}}</p>
-
     <p *ngIf="dataRes">Peso</p>
     <p *ngIf="dataRes">{{peso}}</p>
-
     <p *ngIf="dataRes">Pasos</p>
     <p *ngIf="dataRes">{{pasos}}</p>
   </div>
