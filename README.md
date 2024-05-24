@@ -1,6 +1,6 @@
 # Ionic Health Kit IOS
 
-Esta app en ionic capacitor toma el plugin de [capacitor-healthkit](https://github.com/LuisDiaz-ipsilon/capacitor-healthkit) modificado por LuisDiaz-ipsilon y desarollado por [perfood](https://github.com/perfood/capacitor-healthkit).
+Esta app en ionic capacitor toma el plugin de [capacitor-healthkit](https://github.com/LuisDiaz-ipsilon/capacitor-healthkit) modificado por LuisDiaz-ipsilon y desarrollado por [perfood](https://github.com/perfood/capacitor-healthkit).
 
 ## Importante
 
